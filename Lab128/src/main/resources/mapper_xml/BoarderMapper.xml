@@ -1,4 +1,5 @@
--- TableSpace
+<mapper namespace="com.itnwe.Lab128.mapper.TableSpaceMapper">
+    <select id="getTableSpace" resultType="com.itnwe.Lab128.domain.TableSpaceDao">
  select a.tablespace_name 				as TsName,
         sum(a.total) 					as MaxSize,
         sum(a.realsize) - sum(b.free) 	as Used,
@@ -22,3 +23,5 @@
   where a.tablespace_name = b.tablespace_name(+)
   group by a.tablespace_name
   order by 3 desc;
+    </select>
+</mapper>
