@@ -1,9 +1,8 @@
-package mapper;
+package com.itnwe.Lab128.mapper;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import domain.TableSpaceDao;
-
+import com.itnwe.Lab128.domain.TableSpaceDao;
 
 @Repository("TableSpaceMapper")
 public interface TableSpaceMapper {

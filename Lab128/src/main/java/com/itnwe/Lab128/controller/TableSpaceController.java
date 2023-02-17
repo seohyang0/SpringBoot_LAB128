@@ -1,4 +1,4 @@
-package controller;
+package com.itnwe.Lab128.controller;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import domain.TableSpaceDao;
-import service.TableSpaceService;
+import com.itnwe.Lab128.domain.TableSpaceDao;
+import com.itnwe.Lab128.service.TableSpaceService;
 
 @Controller
 public class TableSpaceController {
