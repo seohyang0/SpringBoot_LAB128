@@ -1,11 +1,12 @@
 package com.itnwe.Lab128.mapper;
 
 import java.util.List;
-import org.springframework.stereotype.Repository;
-import com.itnwe.Lab128.domain.TableSpaceDao;
 
-@Repository("TableSpaceMapper")
+import org.apache.ibatis.annotations.Mapper;
+import com.itnwe.Lab128.dto.TableSpaceDto;
+
+@Mapper	
 public interface TableSpaceMapper {
-	public List<TableSpaceDao> getTableSpace();
+	List<TableSpaceDto> selectTableSpaceList() throws Exception; 
 
 }
