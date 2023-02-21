@@ -1,9 +1,10 @@
-package com.itnwe.Lab128.mapper;
+package com.itnwe.Lab128.TableSpace.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import com.itnwe.Lab128.dto.TableSpaceDto;
+
+import com.itnwe.Lab128.TableSpace.dto.TableSpaceDto;
 
 @Mapper	
 public interface TableSpaceMapper {

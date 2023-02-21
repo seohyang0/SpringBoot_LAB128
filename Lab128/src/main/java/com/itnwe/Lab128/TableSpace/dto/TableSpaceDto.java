@@ -1,4 +1,4 @@
-package com.itnwe.Lab128.dto;
+package com.itnwe.Lab128.TableSpace.dto;
 
 import lombok.Data;
 
