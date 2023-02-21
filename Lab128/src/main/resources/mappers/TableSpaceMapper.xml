@@ -1,7 +1,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itnwe.Lab128.mapper.TableSpaceMapper">
-    <select id="selectTableSpaceList" resultType="com.itnwe.Lab128.dto.TableSpaceDto">
+<mapper namespace="com.itnwe.Lab128.TableSpace.mapper.TableSpaceMapper">
+    <select id="selectTableSpaceList" resultType="com.itnwe.Lab128.TableSpace.dto.TableSpaceDto">
  		select a.tablespace_name AS TABLESPACENAME,
        sum(a.total) 	 AS MAXSIZE,
        sum(a.realsize) - sum(b.free) AS USED,

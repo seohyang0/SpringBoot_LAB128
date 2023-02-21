@@ -1,12 +1,12 @@
-package com.itnwe.Lab128.service;
+package com.itnwe.Lab128.TableSpace.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itnwe.Lab128.dto.TableSpaceDto;
-import com.itnwe.Lab128.mapper.TableSpaceMapper;
+import com.itnwe.Lab128.TableSpace.dto.TableSpaceDto;
+import com.itnwe.Lab128.TableSpace.mapper.TableSpaceMapper;
 
 
 @Service //서비스임을 선언
