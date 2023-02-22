@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itnwe.Lab128.TableSpace.dto.TableSpaceDto;
+import com.itnwe.Lab128.TableSpace.dto.TableSpaceLabelDto;
 import com.itnwe.Lab128.TableSpace.service.TableSpaceService;
+import com.itnwe.Lab128.TableSpace.service.TableSpaceLabelService;
 
 @Controller //컨트롤러 선언
 public class TableSpaceController {
 	
 	@Autowired
 	private TableSpaceService TableSpaceService;
+	
+	@Autowired
+	private TableSpaceLabelService TableSpaceLabelService;
 	
 	@RequestMapping("/")
     public String index() {
@@ -29,10 +34,14 @@ public class TableSpaceController {
 	@ResponseBody //view가 아닌 객체정보 전달을 위해 사용
 	public ModelAndView openBoardList() throws Exception{
 
-		ModelAndView mv = new ModelAndView("TableSpace"); //templates 폴더 아래의 /TableSpace.html 호출
+		ModelAndView mv = new ModelAndView(); //templates 폴더 아래의 /TableSpace.html 호출
 		
-		List<TableSpaceDto> list = TableSpaceService.selectTableSpaceList();
-		mv.addObject("list", list);
+		List<TableSpaceDto> TableSpaceList = TableSpaceService.selectTableSpaceList();
+		List<TableSpaceLabelDto> TableSpaceLabelList = TableSpaceLabelService.selectTableSpaceLabelList();
+					
+		mv.addObject("TableSpaceList", TableSpaceList);
+		mv.addObject("TableSpaceLabelList", TableSpaceLabelList);
+		mv.setViewName("TableSpace");
 		
 		return mv;
 	}

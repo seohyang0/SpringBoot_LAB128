@@ -1,0 +1,16 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itnwe.Lab128.TableSpace.mapper.TableSpaceLabelMapper">
+    <select id="selectTableSpaceLabelList" resultType="com.itnwe.Lab128.TableSpace.dto.TableSpaceLabelDto">
+		select (select count(*) from v$tablespace)||' Tablespaces.' AS TABLESPACES, 
+       		   'Total '||round((c.tbssize+e.tmpsize)/1024/1024/1024,2)||'GB.' AS TOTAL,
+       		   'Used '||round((c.tbssize-d.freesize)/1024/1024/1024,2)||'GB.' AS USEDGB,
+       		   (select count(*) from dba_triggers where status!='ENABLED' and owner not in ('SYS','SYSTEM'))||' disable triggers.' AS TRIGGERS,  
+       		   (select case when count(*)=0 then null 
+                    		when count(*) > 0 then count(*)||' unusable indexes.' end "Index Check"
+          		  from dba_indexes where status='UNUSABLE') AS INDEXES
+  		  from (select sum(bytes) as tbssize from dba_data_files)  c,
+       		   (select sum(bytes) as freesize from dba_free_space) d,
+       		   (select sum(bytes) as tmpsize from dba_Temp_files) e
+    </select>
+ </mapper>
