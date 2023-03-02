@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class TableSpaceDto {
 	private String TABLESPACENAME;
-	private int MAXSIZE;
-	private int USED;
-	private int USEDPER;
+	private String MAXSIZE;
+	private String USED;
+	private String USEDPER;
 }

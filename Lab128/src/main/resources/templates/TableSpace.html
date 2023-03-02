@@ -2,38 +2,42 @@
 <html lang="ko" xmlns:th="<http://www.thymeleaf.org>">
 <head>
 	<title>TableSpace</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}"></link>
+	<link rel="stylesheet" th:href="@{/css/TableSpace.css}"></link>
 </head>
 <body>
 	<div class="container">
-		<h2>TableSpace</h2>
-		<table class="board_list">
-			<colgroup>
-				<col width="15%"/>
-				<col width="*"/>
-				<col width="15%"/>
-				<col width="25%"/>
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col">TsName</th>
-					<th scope="col">MaxSize</th>
-					<th scope="col">Used</th>
-					<th scope="col">Used%</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
-					<td th:text="${list.TABLESPACENAME}"></td>
-					<td th:text="${list.MAXSIZE}"></td>
-					<td th:text="${list.USED}"></td>
-					<td th:text="${list.USEDPER}"></td>
-				</tr>
-				<tr th:unless="${#lists.size(list)} > 0">
-					<td colspan="4">조회된 결과가 없습니다.</td>
-				</tr>
-			</tbody>
-		</table>
+		<h2 class="tablespace">TableSpace</h2>
+		<div>
+			<table class="board_list">
+				<p th:text="${TableSpaceLabel.TABLESPACES}"
+				   th:each="TableSpaceLabel : ${TableSpaceLabelList}"></p>
+				<p th:text="${TableSpaceLabel.TOTAL}"
+				   th:each="TableSpaceLabel : ${TableSpaceLabelList}"></p>
+				<p th:text="${TableSpaceLabel.USEDGB}"
+				   th:each="TableSpaceLabel : ${TableSpaceLabelList}"></p>
+				<p th:text="${TableSpaceLabel.INDEXES}"
+				   th:each="TableSpaceLabel : ${TableSpaceLabelList}"></p>
+				<p th:text="${TableSpaceLabel.TRIGGERS}"
+				   th:each="TableSpaceLabel : ${TableSpaceLabelList}"></p>   
+				<div class="progress-bar"><div data-width="${TableSpace.USEDPER}" style=""></div>
+				<thead>
+					<tr>
+						<th scope="col">TsName</th>
+						<th scope="col">MaxSize</th>
+						<th scope="col">Used,M</th>
+						<th scope="col">Used%</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:block th:each="TableSpace : ${TableSpaceList}">
+						<td th:text="${TableSpace.TABLESPACENAME}"></td>
+						<td th:text="${TableSpace.MAXSIZE}"></td>
+						<td th:text="${TableSpace.USED}"></td>
+						<td class="bar" th:text="${TableSpace.USEDPER}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
